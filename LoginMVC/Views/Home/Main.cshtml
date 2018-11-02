@@ -1,0 +1,118 @@
+﻿<div class="jumbotron">
+    <h1>User Information - @ViewBag.Employee.Name</h1>
+</div>
+<div class="row" style="margin-bottom: 15px;">
+    <div class="col-md-4">
+    </div>
+    <div class="col-md-6">
+        <div class="btn-group pull-right">
+            <button type="button"
+                    id="btnSignOut"
+                    class="btn btn-default">
+                Sign out - @ViewBag.Employee.UserName
+            </button>
+        </div>
+    </div>
+    <div class="col-md-2">
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-2">
+    </div>
+    <div class="col-md-8">
+        <div class="row">
+            <div class="thumbnail">
+                <div class="caption">
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Name</label>
+                            <div class="col-sm-10">
+                                <input class="form-control"
+                                       id="name"
+                                       type="text"
+                                       disabled
+                                       value=@ViewBag.Employee.Name
+                                       placeholder="Enter your name...">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Email ID</label>
+                            <div class="col-sm-10">
+                                <input class="form-control"
+                                       id="email"
+                                       type="email"
+                                       disabled
+                                       value=@ViewBag.Employee.EmailId
+                                       placeholder="Enter your Email ID...">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">User Name</label>
+                            <div class="col-sm-10">
+                                <input class="form-control"
+                                       id="username"
+                                       type="text"
+                                       disabled
+                                       value=@ViewBag.Employee.UserName
+                                       placeholder="Enter your user name...">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Password</label>
+                            <div class="col-sm-10">
+                                <input class="form-control"
+                                       id="password"
+                                       type="password"
+                                       disabled
+                                       value=@ViewBag.Employee.Password
+                                       placeholder="Enter your password...">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Role</label>
+                            <div class="col-sm-10">
+                                @{
+                                    List<SelectListItem> listItems = new List<SelectListItem>();
+                                    listItems.Add(new SelectListItem
+                                    {
+                                        Text = "Employee",
+                                        Value = "0",
+                                        Selected = ((int)@ViewBag.Employee.Role == 0) ? true : false 
+                                    });
+                                    listItems.Add(new SelectListItem
+                                    {
+                                        Text = "Admin",
+                                        Value = "1",
+                                        Selected = ((int)@ViewBag.Employee.Role == 1) ? true : false
+                                    });
+                                }
+
+                                @Html.DropDownList(
+                                        "roleDD",
+                                        listItems,
+                                        new { @class = "form-control", @disabled = "disabled" })
+
+
+
+                                @*<select class="form-control" id="role">
+                                        <option value="-1">-- Select --</option>
+                                        <option value="0">Employee</option>
+                                        <option value="1">Admin</option>
+                                    </select>*@
+
+                            </div>
+                        </div>
+                        @*<div class="form-group">
+                                <label for="disabledInput" class="col-sm-2 control-label"></label>
+                                <div class="col-sm-10">
+                                    <button type="button" id="btnRegister" class="btn btn-default">Register</button>
+                                </div>
+                            </div>*@
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-2">
+    </div>
+</div>
